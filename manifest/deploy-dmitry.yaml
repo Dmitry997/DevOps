@@ -17,4 +17,4 @@ spec:
     spec:
         containers:
             -name : my-deploy-conteiner
-            image : 
+            image : dmitry997/devops:latest
