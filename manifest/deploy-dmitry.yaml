@@ -18,3 +18,6 @@ spec:
         containers:
             -name : my-deploy-conteiner
             image : dmitry997/devops:latest
+            ports:
+               -containerPort: 80
+                
