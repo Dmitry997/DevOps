@@ -1,14 +1,20 @@
 
 apiVersion : v1
-kind : Pod
+kind : Deployment
 metadata : 
-    name : pod-dmitry
+    name : deploy-dmitry
     labels:
         owner: SafronovDmitry
+        app: my-k8s-application
 spec:
-    containers :
-     - name : container-dmitry
-       
-       image : dmitry997/devops:latest
-       ports :
-       - containerPort: 80
+  selector:
+    matchLabels:
+        project : my-devops-deploy
+  template:
+    metadata:
+    labels:
+        project : my-devops-deploy
+    spec:
+        containers:
+            -name : my-deploy-conteiner
+            image : 
