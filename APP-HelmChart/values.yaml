@@ -1,1 +1,4 @@
-1
+replicaCount : 2
+
+container:
+    image: dmitry997/devops:latest

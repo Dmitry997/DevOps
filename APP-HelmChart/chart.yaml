@@ -1,1 +1,5 @@
-1
+apiVersion: v2
+name: App-HelmChart
+description: my test helm chart
+type: application
+version: 1.0.0
