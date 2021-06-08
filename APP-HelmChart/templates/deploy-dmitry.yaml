@@ -1,0 +1,41 @@
+
+apiVersion : apps/v1
+kind : Deployment
+metadata : 
+    name : deploy-dmitry
+    labels:
+        owner: SafronovDmitry
+        app: my-k8s-application
+spec:
+  selector:
+    matchLabels:
+        project : my-devops-deploy
+  template:
+    metadata:
+        labels:
+            project : my-devops-deploy  # Service will take this pods by label
+    spec:
+        containers:
+            - name    : container-dmitry  
+              image : dmitry997/devops:latest
+              ports:
+                - containerPort: 80 
+                
+---
+
+apiVersion: v1
+kind: Service
+metadata : 
+    name : my-service
+    labels:
+        owner: SafronovDmitry
+spec:
+    selector:
+        project : my-devops-deploy  # Selecting PODS with this label
+    ports:
+        - name      : app-listener
+          protocol  : TCP
+          port      : 8080 # Port on LoadBalancer
+          targetPort: 80 # Port on POD
+    type: LoadBalancer
+    
